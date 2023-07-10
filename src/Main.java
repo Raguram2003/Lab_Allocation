@@ -1,17 +1,64 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
+class Sorting{
+    int[] sorting(int room1,int room2,int room3)
+    {
+        int[] array = {room1,room2,room3};
+        for (int i = 0; i < array.length; i++) {
+
+            // Inner nested loop pointing 1 index ahead
+            for (int j = i + 1; j < array.length; j++) {
+
+                // Checking elements
+                int temp = 0;
+                if (array[j] < array[i]) {
+
+                    // Swapping
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        return array;
+    }
+}
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner=new Scanner(System.in);
+        int l1 = scanner.nextInt();
+        int l2 = scanner.nextInt();
+        int l3 = scanner.nextInt();
+        int total_number_students = scanner.nextInt();
+        int answer=0;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Sorting sorting = new Sorting();
+        int[] sorted_array = sorting.sorting(l1,l2,l3);
+        if(total_number_students<=sorted_array[0])
+        {
+            answer = sorted_array[0];
+        } else if (total_number_students<=sorted_array[1]) {
+            answer = sorted_array[1];
         }
+        else if (total_number_students < sorted_array[2]){
+            answer =sorted_array[2];
+        }
+        else {
+             System.out.println("No lab fit for this capacity");
+        }
+
+        if(answer==0){
+
+        }
+        else if(answer==l1)
+        {
+            System.out.println("L1");
+        } else if (answer==l2) {
+            System.out.println("L2");
+        }
+        else {
+            System.out.println("L3");
+        }
+        scanner.close();
     }
 }
